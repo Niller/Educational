@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Rope2D
 {
+    [RequireComponent(typeof(LineRenderer))]
     public class Bowable : MonoBehaviour
     {
         private LineRenderer _lineRenderer;
@@ -21,6 +22,8 @@ namespace Rope2D
         private float _angleDeviation = 30f;
         [SerializeField] 
         private float _speed = 1f;
+        [SerializeField] 
+        private int _simulationCount = 50;
         
         private float _time;
         private float _currentAngle;
@@ -54,7 +57,7 @@ namespace Rope2D
 
         private void Simulate()
         {
-            for (var i = 0; i < 50; i++)
+            for (var i = 0; i < _simulationCount; i++)
             {
                 ApplyConstraint();
             }
