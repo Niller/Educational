@@ -3,7 +3,7 @@
 public class SnailController : MonoBehaviour
 {
     public Transform PathContainer;
-    public Rigidbody2D[] _rigidbodies;
+    public Transform[] _rigidbodies;
     public Transform Target;
     public Rigidbody2D Rigidbody2D;
     
