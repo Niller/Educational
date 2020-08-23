@@ -15,7 +15,7 @@ namespace Sandbox2D.Scripts
         {
             foreach (var forceable in _forceables)
             {
-                forceable.ApplyForce(scroll * 10);
+                forceable.ApplyForce(scroll);
             }
         }
     }

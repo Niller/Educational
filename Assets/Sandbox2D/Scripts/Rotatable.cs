@@ -17,6 +17,8 @@ namespace Sandbox2D.Scripts
         private float _springForceMultiplier;
         [SerializeField] 
         private float _torqueForceMultiplier = 10f;
+        [SerializeField] 
+        private float _customForce;
 
         private float _torqueForce;
         private float _springForce;
@@ -24,7 +26,8 @@ namespace Sandbox2D.Scripts
         private Quaternion _minAngle;
         private Quaternion _maxAngle;
         private Quaternion _centerAngle;
-        private float _time;
+        private float _angularVelocity;
+        private float _angularAcceleration;
         
 
         private void Awake()
@@ -32,33 +35,57 @@ namespace Sandbox2D.Scripts
             _centerAngle = transform.rotation;
             _minAngle = Quaternion.Euler(_centerAngle.eulerAngles + Vector3.forward * _minDeviation);
             _maxAngle = Quaternion.Euler(_centerAngle.eulerAngles + Vector3.forward * _maxDeviaton);
+            Time.timeScale = 0.1f;
+            
+        }
+
+        [ContextMenu("Apply Impulse")]
+        private void ApplyImpulse()
+        {
+            ApplyForce(_customForce);
+            Debug.Break();
+        }
+
+        [ContextMenu("Reset")]
+        private void Reset()
+        {
+            _angularVelocity = 0;
+            _angularAcceleration = 0;
         }
 
         private void ApplyForce(float force)
         {
+            _angularAcceleration = force * _torqueForceMultiplier;
+            /*
             force *= _torqueForceMultiplier;
             if (force * _torqueForce < 0)
             {
-                _time = 0;
                 _torqueForce = force;
             }
             else
             {
                 if (_torqueForce * _torqueForce < force * force)
                 {
-                    _time = 0;
                     _torqueForce = force;
                 }    
             }
+            */
         }
 
         private void LateUpdate()
         {
+            
+            var rotation = Quaternion.AngleAxis(_angularVelocity, Vector3.forward);
+            rotation = ClampRotation(rotation, new Vector3(0, 0, _maxDeviaton));
+            transform.rotation = rotation;
+            
+            UpdateVelocity(); 
+            //UpdateAcceleration();
+            
+            /*
             if (_torqueForce * _torqueForce > Mathf.Epsilon)
             {
-                var rotation = Quaternion.AngleAxis(_torqueForce * _torqueSpeed, Vector3.forward);
-                rotation = ClampRotation(rotation, new Vector3(0, 0, _maxDeviaton));
-                transform.rotation = rotation;
+                
             }
             else
             {
@@ -67,9 +94,27 @@ namespace Sandbox2D.Scripts
             }
 
             ApplyDamping();
-            _time = Time.fixedDeltaTime;
+            */
         }
 
+        private void UpdateVelocity()
+        {
+            _angularVelocity += _angularAcceleration;
+            var diff = Quaternion.Angle(transform.rotation, _centerAngle);
+            var relativeDiff = diff / _maxDeviaton;
+            _angularVelocity -= relativeDiff * _angularVelocity;
+        }
+
+        private void UpdateAcceleration()
+        {
+            
+            var diff = Quaternion.Angle(transform.rotation, _centerAngle);
+            _angularAcceleration += diff * _damping;
+            Debug.Log(_angularAcceleration);
+            //_angularAcceleration *= _damping;
+        }
+
+        /*
         private void ApplyDamping()
         {
             var angle = Quaternion.Angle(transform.rotation, _centerAngle);
@@ -84,6 +129,7 @@ namespace Sandbox2D.Scripts
                 _springForce *= _damping;
             }
         }
+        */
         
         private static Quaternion ClampRotation(Quaternion q, Vector3 bounds)
         {

@@ -42,9 +42,9 @@ namespace Sandbox2D.Scripts
             _camera.transform.position += (Vector3)scroll;
             var currentScrollSqrMagnitude = relativeScroll.sqrMagnitude * 10000f;
             //Debug.Log(Mathf.Abs(currentScrollSqrMagnitude - _lastScrollSqrMagnitude));
-            if (Mathf.Abs(currentScrollSqrMagnitude - _lastScrollSqrMagnitude) > _scrollEventThreshold)
+            //if (Mathf.Abs(currentScrollSqrMagnitude - _lastScrollSqrMagnitude) > _scrollEventThreshold)
             {
-                Debug.Log(Mathf.Abs(currentScrollSqrMagnitude - _lastScrollSqrMagnitude));
+                //Debug.Log(Mathf.Abs(currentScrollSqrMagnitude - _lastScrollSqrMagnitude));
                 foreach (var scrollListener in _scrollListeners)
                 {
                     scrollListener.OnScroll(scroll);
