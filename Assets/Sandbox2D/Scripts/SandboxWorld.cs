@@ -31,6 +31,7 @@ namespace Sandbox2D.Scripts
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            _lastScrollSqrMagnitude = 0;
             //no op            
         }
 
@@ -42,7 +43,8 @@ namespace Sandbox2D.Scripts
             _camera.transform.position += (Vector3)scroll;
             var currentScrollSqrMagnitude = relativeScroll.sqrMagnitude * 10000f;
             //Debug.Log(Mathf.Abs(currentScrollSqrMagnitude - _lastScrollSqrMagnitude));
-            //if (Mathf.Abs(currentScrollSqrMagnitude - _lastScrollSqrMagnitude) > _scrollEventThreshold)
+            if (Mathf.Abs(currentScrollSqrMagnitude - _lastScrollSqrMagnitude) > _scrollEventThreshold || 
+                Math.Abs(_lastScrollSqrMagnitude) < Mathf.Epsilon)
             {
                 //Debug.Log(Mathf.Abs(currentScrollSqrMagnitude - _lastScrollSqrMagnitude));
                 foreach (var scrollListener in _scrollListeners)
