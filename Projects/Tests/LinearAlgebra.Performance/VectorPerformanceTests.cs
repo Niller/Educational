@@ -70,7 +70,7 @@ namespace LinearAlgebra.Performance
 
             return sum;
         }
-        
+        /*
         [Benchmark]
         public float MagnitudeNaiveVector()
         {
@@ -82,6 +82,6 @@ namespace LinearAlgebra.Performance
 
             return sum;
         }
-
+        */
     }
 }

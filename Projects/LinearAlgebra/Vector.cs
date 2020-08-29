@@ -5,7 +5,7 @@ namespace LinearAlgebra
     public readonly struct Vector
     {
         private readonly ArraySlice<float> _values;
-        private readonly float _size;
+        private readonly int _size;
 
         public float Size => _size;
 
@@ -14,9 +14,10 @@ namespace LinearAlgebra
             get
             {
                 var result = 0f;
-                for (var i = 0; i < _size; ++i)
+                var index = _size;
+                while (index-- > 0)
                 {
-                    var item = _values.GetValue(i);
+                    var item = _values.GetValue(index);
                     result += item * item;
                 }
 
