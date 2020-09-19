@@ -4,14 +4,11 @@ using Random = UnityEngine.Random;
 
 namespace Sandbox2D.Scripts.Water
 {
-    [ExecuteInEditMode]
     public class Water : MonoBehaviour
     {
         private const string DynamicObjectName = "Dynamic";
         
-        public bool ExecuteInEditMode;
-        public float Width;
-        public float Height;
+        public Vector2 Size;
         public int VertexDensity = 5;
         
         public float Spring = 0.02f;
@@ -37,15 +34,7 @@ namespace Sandbox2D.Scripts.Water
             
             TrySpawn();
         }
-
-        private void Update()
-        {
-            if (!ExecuteInEditMode && !Application.isPlaying)
-            {
-                return;
-            }
-        }
-
+        
         [ContextMenu("Spawn")]
         private void TrySpawn()
         {
@@ -69,18 +58,17 @@ namespace Sandbox2D.Scripts.Water
 
         private void FillNodeInfo()
         {
-            var edgeCount = Mathf.RoundToInt(Width) * VertexDensity;
+            var edgeCount = Mathf.RoundToInt(Size.x) * VertexDensity;
             var nodeCount = edgeCount + 1;
             _nodeInfos = new NodeInfo[nodeCount];
             
-
             var p = transform.position;
-            var top = p.y + Height / 2f;
-            var left = p.x - Width / 2f;
+            var left = p.x - Size.x / 2f;
+            var top = p.y + Size.y / 2f;
             
             for (var i = 0; i < nodeCount; i++)
             {
-                _nodeInfos[i] = new NodeInfo(new Vector2(left + Width * i / edgeCount, top), 0, 0);
+                _nodeInfos[i] = new NodeInfo(new Vector2(left + Size.x * i / edgeCount, top), 0, 0);
             }
         }
 
@@ -99,9 +87,9 @@ namespace Sandbox2D.Scripts.Water
                 var nodeInfoNext = _nodeInfos[i + 1];
                 
                 _cachedVertices[index] = nodeInfo.Position; 
-                _cachedVertices[index + 1] = new Vector3(nodeInfo.Position.x, nodeInfo.Position.y - Height, 0); 
+                _cachedVertices[index + 1] = new Vector3(nodeInfo.Position.x, nodeInfo.Position.y - Size.y, 0); 
                 _cachedVertices[index + 2] = nodeInfoNext.Position; 
-                _cachedVertices[index + 3] = new Vector3(nodeInfoNext.Position.x, nodeInfoNext.Position.y - Height, 0);
+                _cachedVertices[index + 3] = new Vector3(nodeInfoNext.Position.x, nodeInfoNext.Position.y - Size.y, 0);
 
                 //UV
                 uv[index] = new Vector2(i / (nodeLength - 1f), 0f);
@@ -144,9 +132,9 @@ namespace Sandbox2D.Scripts.Water
                 var nodeInfo = _nodeInfos[i];
                 var nodeInfoNext = _nodeInfos[i + 1];
                 _cachedVertices[index] = nodeInfo.Position; 
-                _cachedVertices[index + 1] = new Vector3(nodeInfo.Position.x, nodeInfo.Position.y - Height, 0); 
+                _cachedVertices[index + 1] = new Vector3(nodeInfo.Position.x, nodeInfo.Position.y - Size.y, 0); 
                 _cachedVertices[index + 2] = nodeInfoNext.Position; 
-                _cachedVertices[index + 3] = new Vector3(nodeInfoNext.Position.x, nodeInfoNext.Position.y - Height, 0);
+                _cachedVertices[index + 3] = new Vector3(nodeInfoNext.Position.x, nodeInfoNext.Position.y - Size.y, 0);
             }
 
             _dynamicMesh.vertices = _cachedVertices;
@@ -154,7 +142,7 @@ namespace Sandbox2D.Scripts.Water
 
         private void FixedUpdate()
         {
-            var baseHeight = transform.position.y + Height / 2f;
+            var baseHeight = transform.position.y + Size.y / 2f;
             for (int i = 0, len = _nodeInfos.Length; i < len; ++i)
             {
                 var nodeInfo = _nodeInfos[i];
@@ -204,7 +192,7 @@ namespace Sandbox2D.Scripts.Water
             UpdateMesh();
         }
 
-        
+
         public void Splash(float xPos, float velocity)
         {
             if (xPos < _nodeInfos[0].Position.x || xPos > _nodeInfos[_nodeInfos.Length - 1].Position.x)
@@ -272,7 +260,7 @@ namespace Sandbox2D.Scripts.Water
         {
             var cachedColor = Gizmos.color;
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireCube(transform.position, new Vector3(Width, Height, 0.1f));
+            Gizmos.DrawWireCube(transform.position, new Vector3(Size.x, Size.y, 0.1f));
             Gizmos.color = cachedColor;
         }
 
