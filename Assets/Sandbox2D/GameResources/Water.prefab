@@ -72,7 +72,7 @@ MonoBehaviour:
     _max: 0.6
     _type: 1
   Period: 2
-  Direction: 1
+  Direction: 0
 --- !u!114 &6443626041466640334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,9 +85,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 971e465309ac416b9543fb2129a258ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UseWaves: 1
-  BaseFloatForce: 0.3
+  UseWaves: 0
+  BaseAngleForce: 0.5
   WaveForce: 3
+  FloatingForce:
+    _constant: 0
+    _min: 0
+    _max: 1
+    _type: 1
+  FloatingPeriod: 2
 --- !u!61 &7533103409394511541
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -128,7 +134,7 @@ BuoyancyEffector2D:
     m_Bits: 4294967295
   m_SurfaceLevel: 0
   m_Density: 2
-  m_LinearDrag: 5
+  m_LinearDrag: 2
   m_AngularDrag: 1
   m_FlowAngle: 0
   m_FlowMagnitude: 0

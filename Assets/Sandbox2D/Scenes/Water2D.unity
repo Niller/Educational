@@ -211,6 +211,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 123834855415299479, guid: ade7584b072088a46a16673f4355aab3,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 123834855415299479, guid: ade7584b072088a46a16673f4355aab3,
+        type: 3}
+      propertyPath: m_Density
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3009310820122855444, guid: ade7584b072088a46a16673f4355aab3,
         type: 3}
       propertyPath: m_Name
@@ -270,11 +280,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6443626041466640334, guid: ade7584b072088a46a16673f4355aab3,
-        type: 3}
-      propertyPath: WaveForce
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ade7584b072088a46a16673f4355aab3, type: 3}
@@ -344,6 +349,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920899322039058532, guid: ad049901f053ca14a9d8b45cc9d49eb7,
+        type: 3}
+      propertyPath: m_Mass
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad049901f053ca14a9d8b45cc9d49eb7, type: 3}
