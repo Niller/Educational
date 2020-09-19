@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5800538450772800540}
   - component: {fileID: 5817288782297739585}
+  - component: {fileID: 3506666008149953364}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -52,3 +53,22 @@ MonoBehaviour:
   Spread: 0.05
   WaveSpreadIterationsCount: 8
   WaterMaterial: {fileID: 2100000, guid: 3d744a7916c6f984695739c1f4e1c277, type: 2}
+--- !u!114 &3506666008149953364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3009310820122855444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7d46f4977e64bb49a5f4dd86d961e08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Force:
+    _constant: 0
+    _min: 0.25
+    _max: 0.6
+    _type: 1
+  Period: 3
+  Direction: 0

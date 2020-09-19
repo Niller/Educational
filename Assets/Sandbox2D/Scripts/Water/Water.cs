@@ -43,7 +43,7 @@ namespace Sandbox2D.Scripts.Water
             if (!ExecuteInEditMode && !Application.isPlaying)
             {
                 return;
-            }    
+            }
         }
 
         [ContextMenu("Spawn")]
@@ -205,7 +205,7 @@ namespace Sandbox2D.Scripts.Water
         }
 
         
-        private void Splash(float xPos, float velocity)
+        public void Splash(float xPos, float velocity)
         {
             if (xPos < _nodeInfos[0].Position.x || xPos > _nodeInfos[_nodeInfos.Length - 1].Position.x)
             { 
@@ -217,6 +217,16 @@ namespace Sandbox2D.Scripts.Water
                 (_nodeInfos.Length - 1) * 
                 (relativeXPos / (_nodeInfos[_nodeInfos.Length-1].Position.x - _nodeInfos[0].Position.x)));
             _nodeInfos[index].Velocity = velocity;
+        }
+
+        public float GetLeftPosition()
+        {
+            return _nodeInfos[0].Position.x;
+        }
+
+        public float GetRightPosition()
+        {
+            return _nodeInfos[_nodeInfos.Length - 1].Position.x;
         }
 
         [ContextMenu("Splash")]
