@@ -216,6 +216,11 @@ namespace Sandbox2D.Scripts.Water
         {
             return _nodeInfos[_nodeInfos.Length - 1].Position.x;
         }
+        
+        public float GetTopPosition()
+        {
+            return _nodeInfos[0].Position.y;
+        }
 
         [ContextMenu("Splash")]
         private void RandomSplash()

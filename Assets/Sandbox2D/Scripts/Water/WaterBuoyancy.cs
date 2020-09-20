@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 namespace Sandbox2D.Scripts.Water
@@ -15,6 +14,7 @@ namespace Sandbox2D.Scripts.Water
         public float WaveForce;
         public FloatProperty FloatingForce;
         public float FloatingPeriod;
+        public GameObject WaterDrops;
         
         private Water _water;
         private BuoyancyEffector2D _buoyancy;
@@ -81,8 +81,14 @@ namespace Sandbox2D.Scripts.Water
             {
                 return;
             }
-            
-            _water.Splash(other.transform.position.x, sailingObject.GetFallForce());
+
+            var collisionObjectPos = other.transform.position;
+            _water.Splash(collisionObjectPos.x, sailingObject.GetFallForce());
+
+            var hitPos = new Vector2(collisionObjectPos.x, _water.GetTopPosition());
+            var waterDrops = Instantiate(WaterDrops);
+            waterDrops.transform.position = hitPos;
+            waterDrops.GetComponent<WaterDrops>().Initialize();
 
             sailingObject.SetFloatingForce(FloatingForce, FloatingPeriod);
             _sailingObjects.Add(sailingObject);

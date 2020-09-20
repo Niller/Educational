@@ -94,6 +94,8 @@ MonoBehaviour:
     _max: 1
     _type: 1
   FloatingPeriod: 2
+  WaterDrops: {fileID: 1026249557070034037, guid: ff90a507c23e78a41a54781efcc9c265,
+    type: 3}
 --- !u!61 &7533103409394511541
 BoxCollider2D:
   m_ObjectHideFlags: 0
