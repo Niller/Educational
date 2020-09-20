@@ -10,6 +10,8 @@ namespace Sandbox2D.Scripts.Water
         
         public Vector2 Size;
         public int VertexDensity = 5;
+        public Color TopColor;
+        public Color BottomColor;
         
         public float Spring = 0.02f;
         public float Damping = 0.04f;
@@ -78,6 +80,7 @@ namespace Sandbox2D.Scripts.Water
             var vertexCount = nodeLength * 2;
             _cachedVertices = new Vector3[vertexCount];
             var uv = new Vector2[vertexCount];
+            var colors = new Color[vertexCount];
             var triangles = new int[vertexCount  * 3];
             for (var i = 0; i < nodeLength - 1; ++i)
             {
@@ -96,6 +99,12 @@ namespace Sandbox2D.Scripts.Water
                 uv[index + 1] = new Vector2(i / (nodeLength - 1f), 1f);
                 uv[index + 2] = new Vector2((i + 1f) / (nodeLength - 1f), 0f);
                 uv[index + 3] = new Vector2((i + 1f) / (nodeLength - 1f), 1f);
+                
+                //colors
+                colors[index] = TopColor;
+                colors[index + 1] = BottomColor;
+                colors[index + 2] = TopColor;
+                colors[index + 3] = BottomColor;
                 
                 //Triangles
                 var triangleIndex = i * 6;
@@ -120,7 +129,9 @@ namespace Sandbox2D.Scripts.Water
             
             _dynamicMesh.vertices = _cachedVertices;
             _dynamicMesh.uv = uv;
+            _dynamicMesh.colors = colors;
             _dynamicMesh.triangles = triangles;
+            
         }
 
         private void UpdateMesh()

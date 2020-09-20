@@ -271,6 +271,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5817288782297739585, guid: ade7584b072088a46a16673f4355aab3,
+        type: 3}
+      propertyPath: WaterMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d0179967a2604f46a057b4d9967c808, type: 2}
+    - target: {fileID: 5817288782297739585, guid: ade7584b072088a46a16673f4355aab3,
+        type: 3}
+      propertyPath: TopColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5817288782297739585, guid: ade7584b072088a46a16673f4355aab3,
+        type: 3}
+      propertyPath: BottomColor.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ade7584b072088a46a16673f4355aab3, type: 3}
 --- !u!1001 &6439804907156814990

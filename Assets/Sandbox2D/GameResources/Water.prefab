@@ -49,6 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Size: {x: 18, y: 4}
   VertexDensity: 5
+  TopColor: {r: 0, g: 0.60537386, b: 1, a: 0.5372549}
+  BottomColor: {r: 0, g: 0.07796335, b: 0.5686275, a: 0.79607844}
   Spring: 0.02
   Damping: 0.04
   Spread: 0.05
