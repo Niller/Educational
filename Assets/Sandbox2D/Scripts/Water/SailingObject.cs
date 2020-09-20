@@ -6,6 +6,8 @@ namespace Sandbox2D.Scripts.Water
     [RequireComponent(typeof(Rigidbody2D))]
     public class SailingObject : MonoBehaviour
     {
+        public float FallForceMultiply = 0.04f;
+        
         private Rigidbody2D _rigidbody2D;
         private FloatProperty _floatingForce;
         private float _time = 0;
@@ -22,6 +24,11 @@ namespace Sandbox2D.Scripts.Water
         {
             _floatingForce = force;
             _time = _period = period;
+        }
+
+        public float GetFallForce()
+        {
+            return _rigidbody2D.velocity.y * _rigidbody2D.mass * FallForceMultiply;
         }
 
         private void Update()

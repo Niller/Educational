@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690749e4b5144b669288e8793a066e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FallForceMultiply: 0.01
 --- !u!58 &652325888008907556
 CircleCollider2D:
   m_ObjectHideFlags: 0

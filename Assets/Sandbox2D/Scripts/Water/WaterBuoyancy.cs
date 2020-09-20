@@ -81,6 +81,8 @@ namespace Sandbox2D.Scripts.Water
             {
                 return;
             }
+            
+            _water.Splash(other.transform.position.x, sailingObject.GetFallForce());
 
             sailingObject.SetFloatingForce(FloatingForce, FloatingPeriod);
             _sailingObjects.Add(sailingObject);
