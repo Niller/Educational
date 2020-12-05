@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinearAlgebra", "LinearAlgebra\LinearAlgebra.csproj", "{3EFC63B2-B759-4D8E-B3F3-B744B65ED0E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinearAlgebra.Tests", "Tests\LinearAlgebra.Tests\LinearAlgebra.Tests.csproj", "{64CA6542-11D1-4EC1-91D8-0EE49CF705DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinearAlgebra.Performance", "Tests\LinearAlgebra.Performance\LinearAlgebra.Performance.csproj", "{EC4296AC-DD18-4A7D-90DD-D4EEB59CC5BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3EFC63B2-B759-4D8E-B3F3-B744B65ED0E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EFC63B2-B759-4D8E-B3F3-B744B65ED0E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EFC63B2-B759-4D8E-B3F3-B744B65ED0E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EFC63B2-B759-4D8E-B3F3-B744B65ED0E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64CA6542-11D1-4EC1-91D8-0EE49CF705DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64CA6542-11D1-4EC1-91D8-0EE49CF705DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64CA6542-11D1-4EC1-91D8-0EE49CF705DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64CA6542-11D1-4EC1-91D8-0EE49CF705DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC4296AC-DD18-4A7D-90DD-D4EEB59CC5BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC4296AC-DD18-4A7D-90DD-D4EEB59CC5BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC4296AC-DD18-4A7D-90DD-D4EEB59CC5BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC4296AC-DD18-4A7D-90DD-D4EEB59CC5BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
